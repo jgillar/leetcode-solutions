@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script type="text/javascript" src="1 two sum.js"></script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("ts-1").innerHTML = twoSum(
+          [2, 7, 11, 15],
+          9
+        ).toString();
+      });
+    </script>
+    <title>2. Add Two Numbers</title>
+  </head>
+  <body>
+    <h1>2. Add Two Numbers</h1>
+    <section>
+      <p>
+          You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+
+          <p>
+          You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+      </p>
+    </section>
+    <section>
+      <pre>
+		twoSum([2, 7, 11, 15], 9)
+		Result: <span id="ts-1"></span>
+	  </pre>
+    </section>
+    <section>
+      <p>
+        My solution is extremely basic. We start with the first number in the
+        array and then check it against each remaining number to see if the sum
+        is equal to the target. This is repeated until a match is found.
+      </p>
+    </section>
+  </body>
+</html>
