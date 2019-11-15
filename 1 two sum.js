@@ -11,14 +11,15 @@ You may assume that each input would have exactly one solution, and you may not 
  */
 let twoSum = function(nums, target) {
   let result = null;
-  nums.forEach((num1, index1) => {
-    nums.forEach((num2, index2) => {
-      if (num1 + num2 === target) {
-        result = [index1, index2];
-        return;
-      }
-    });
-  });
 
+  //the inner loop does not need to iterate over the numbers already iterated over in the outer loop
+  for (let index1 = 0; index1 < nums.length; index1++) {
+    for (let index2 = index1 + 1; index2 < nums.length; index2++) {
+      if (nums[index1] + nums[index2] === target) {
+        return [index1, index2];
+        break;
+      }
+    }
+  }
   return result;
 };
