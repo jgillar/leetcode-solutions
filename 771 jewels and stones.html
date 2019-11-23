@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script type="text/javascript" src="771 jewels and stones.js"></script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("ts-1").innerHTML = numJewelsInStones(
+          "aA",
+          "aAAbbbb"
+        );
+        document.getElementById("ts-2").innerHTML = numJewelsInStones(
+          "z",
+          "ZZ"
+        );
+      });
+    </script>
+    <title>771. Jewels and Stones</title>
+  </head>
+  <body>
+    <h1>771. Jewels and Stones</h1>
+    <section>
+      <p>
+        You're given strings J representing the types of stones that are jewels,
+        and S representing the stones you have. Each character in S is a type of
+        stone you have. You want to know how many of the stones you have are
+        also jewels.
+      </p>
+      <p>
+        The letters in J are guaranteed distinct, and all characters in J and S
+        are letters. Letters are case sensitive, so "a" is considered a
+        different type of stone from "A".
+      </p>
+    </section>
+    <section>
+      <pre>
+numJewelsInStones("aA","aAAbbbb");
+Result: <span id="ts-1"></span>
+ 
+numJewelsInStones("z","ZZ");
+Result: <span id="ts-2"></span>
+	  </pre>
+    </section>
+    <section>
+      <p>
+        This was a simple problem. First we split the jewel and stone strings
+        into arrays. Then we iterate over each jewel and count the number of
+        times it occurs in the stone array. The running time would be O(js)
+        where j is the length of the jewel string and s is the length of the
+        stone string.
+      </p>
+      <p>
+        If we check if the stone string contains the jewel before iterating over
+        it, we improve the running time slightly. With this optimization, the
+        time is 56ms versus 60ms without. It's still going to be O(js) though.
+        I'm trying to think of an even better way to do this problem but I think
+        this might be the simplest way.
+      </p>
+    </section>
+  </body>
+</html>
