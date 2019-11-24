@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      type="text/javascript"
+      src="1103 distribute candies to people.js"
+    ></script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("ts-1").innerHTML = distributeCandies(7, 4);
+        document.getElementById("ts-2").innerHTML = distributeCandies(10, 3);
+        document.getElementById("ts-3").innerHTML = distributeCandies(
+          1000000000,
+          1000
+        );
+      });
+    </script>
+    <title>1103 Disbute Candies to People</title>
+  </head>
+  <body>
+    <h1>1103 Disbute Candies to People</h1>
+    <section>
+      <p>
+        We distribute some number of candies, to a row of n = num_people people
+        in the following way:
+      </p>
+      <p>
+        We then give 1 candy to the first person, 2 candies to the second
+        person, and so on until we give n candies to the last person.
+      </p>
+      <p>
+        Then, we go back to the start of the row, giving n + 1 candies to the
+        first person, n + 2 candies to the second person, and so on until we
+        give 2 * n candies to the last person.
+      </p>
+      <p>
+        This process repeats (with us giving one more candy each time, and
+        moving to the start of the row after we reach the end) until we run out
+        of candies. The last person will receive all of our remaining candies
+        (not necessarily one more than the previous gift).
+      </p>
+      <p>
+        Return an array (of length num_people and sum candies) that represents
+        the final distribution of candies.
+      </p>
+    </section>
+    <section>
+      <pre>
+		distributeCandies([7, 4]);
+		Result: <span id="ts-1"></span>
+					
+		distributeCandies([10, 3]);
+		Result: <span id="ts-2"></span>
+
+		distributeCandies([1000000000, 1000]);
+		Result: <span id="ts-3"></span>
+	  </pre>
+    </section>
+    <section>
+      <p>
+        My solution is simple. We create an array of num_people and then iterate
+        over the number of candies. The running time will be O(max(candies,
+        num_people)).
+      </p>
+      <p>
+        One interesting thing I noticed while submitting my solution is that
+        it's a little bit faster to keep a running total of the number of
+		candies given away versus calculating the total using x(x+1)/2. Also, 
+		it's significantly faster to do
+		<pre>arr[x % num_people] += x + 1;</pre>
+		rather than
+		<pre>arr[x % num_people] = arr[x % num_people] + x + 1;</pre>
+		I know it's because when you assign through +=, the system only has to access that memory location once versus twice the other way. Normally I always use += but for whatever reason, I forgot this time. I just wanted to point that out here because it was kind of cool seeing just how much of a difference it makes. The first way yields a runtime of 48ms/faster than 97% of other JavaScript solutions versus 60ms/40% faster than other solutions. 12ms does not seem like a huge difference but I imagine when you're dealing with massive datasets and you don't have unlimited resources to process them, that difference will matter.
+      </p>
+    </section>
+  </body>
+</html>
