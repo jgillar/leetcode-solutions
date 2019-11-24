@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script type="text/javascript" src="27 remove element.js"></script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("ts-1").innerHTML = removeElement(
+          [3, 2, 2, 3],
+          3
+        );
+      });
+    </script>
+    <title>27. Remove Element</title>
+  </head>
+  <body>
+    <h1>27. Remove Element</h1>
+    <section>
+      <p>
+        Given an array nums and a value val, remove all instances of that value
+        in-place and return the new length.
+      </p>
+      <p>
+        Do not allocate extra space for another array, you must do this by
+        modifying the input array in-place with O(1) extra memory.
+      </p>
+      <p>
+        The order of elements can be changed. It doesn't matter what you leave
+        beyond the new length.
+      </p>
+    </section>
+    <section>
+      <pre>
+		removeElement([3,2,2,3], 3);
+		Result: <span id="ts-1"></span>
+		Note: remember that elements beyond the new length do not matter
+ 
+	  </pre>
+    </section>
+    <section>
+      <p>
+        The idea here is to only keep track of the valid numbers as we iterate
+        over the array. We have a lagging pointer that only advances when we see
+        a valid number. When we find a new valid number, we override the lagging
+        pointer with it. If we see an invalid number, we skip over it and don't
+        do anything. As we are only iterating over the array once, the running
+        time is O(n) where n is the length of the nums array.
+      </p>
+      <p>
+        My first idea was to simply switch the invalid number with whatever the
+        next element in the array was. This actually worked well until an array
+        had two invalid numbers in a row. Then I realized it would just be
+        easier to look at the valid numbers instead of the invalid ones.
+      </p>
+    </section>
+  </body>
+</html>
