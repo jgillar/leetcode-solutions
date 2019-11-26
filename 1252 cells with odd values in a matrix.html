@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      type="text/javascript"
+      src="1252 cells with odd values in a matrix.js"
+    ></script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("ts-1").innerHTML = oddCells(2, 3, [
+          [0, 1],
+          [1, 1]
+        ]);
+      });
+    </script>
+    <title>1252. Cells with Odd Values in a Matrix</title>
+  </head>
+  <body>
+    <h1>1252. Cells with Odd Values in a Matrix</h1>
+    <section>
+      <p>
+        Given a list accounts, each element accounts[i] is a list of strings,
+        where the first element accounts[i][0] is a name, and the rest of the
+        elements are emails representing emails of the account.
+      </p>
+      <p>
+        Now, we would like to merge these accounts. Two accounts definitely
+        belong to the same person if there is some email that is common to both
+        accounts. Note that even if two accounts have the same name, they may
+        belong to different people as people could have the same name. A person
+        can have any number of accounts initially, but all of their accounts
+        definitely have the same name.
+      </p>
+      <p>
+        After merging the accounts, return the accounts in the following format:
+        the first element of each account is the name, and the rest of the
+        elements are emails in sorted order. The accounts themselves can be
+        returned in any order.
+      </p>
+    </section>
+    <section>
+      <pre>
+		oddCells(2, 3, [[0,1],[1,1]]);
+        Result: <span id="ts-1"></span>
+ 
+	  </pre>
+    </section>
+    <section>
+      <p>
+        There is nothing particularly special about my solution. First we set up
+        the array of 0s. Then we iterate over the indices array and increase
+        each specified row/column. As we do this, we check if the current
+        element is odd and increase the counter if it is. The overall running
+        time is O(n*m + l) but since l will usually be less than n*m, the
+        running time is essentially O(n*m).
+      </p>
+    </section>
+  </body>
+</html>
