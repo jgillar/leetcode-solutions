@@ -43,9 +43,13 @@
         There is nothing particularly special about my solution. First we set up
         the array of 0s. Then we iterate over the indices array and increase
         each specified row/column. As we do this, we check if the current
-        element is odd and increase the counter if it is. The overall running
-        time is O(n*m + l) but since l will usually be less than n*m, the
-        running time is essentially O(n*m).
+        element is odd and increase the counter if it is.
+      </p>
+      <p>
+        The running time for setting up the array is probably O(n*m) unless
+        JavaScript's built in function for Array.fill() runs in constant time.
+        The running time for actually solving the problem will be O(l*m + l*n)
+        where l is length of the indices array.
       </p>
     </section>
   </body>
