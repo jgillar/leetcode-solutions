@@ -12,7 +12,6 @@
  */
 
 var addTwoNumbers = function(l1, l2) {
-  let summing = true; //whether or not there is still something left to add
   let carry = 0;
   let sum = 0;
   let pointer1 = l1;
