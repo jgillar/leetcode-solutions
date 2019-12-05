@@ -1,11 +1,3 @@
-/*
-You are given two non-empty linked lists representing two non-negative integers. 
-The digits are stored in reverse order and each of their nodes contain a single digit. 
-Add the two numbers and return it as a linked list.
-
-You may assume the two numbers do not contain any leading zero, except the number 0 itself.
-*/
-
 /**
  * Definition for singly-linked list.
  * function ListNode(val) {
@@ -30,7 +22,7 @@ var addTwoNumbers = function(l1, l2) {
   let lsum = null;
   let lsumPointer = null;
 
-  while (summing) {
+  while (!(pointer === null && carry === 0)) {
     if (pointer1 && pointer2 != null) {
       sum = pointer1.val + pointer2.val;
     } else {
@@ -67,13 +59,9 @@ var addTwoNumbers = function(l1, l2) {
       lsumPointer = node;
     }
 
-    if (pointer === null) break;
-
     pointer1 = pointer1 != null ? pointer1.next : null;
     pointer2 = pointer2 != null ? pointer2.next : null;
     pointer = pointer1 === null ? pointer2 : pointer1;
-
-    if (pointer === null && carry === 0) summing = false;
   }
 
   return lsum;
