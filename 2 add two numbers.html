@@ -4,13 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script type="text/javascript" src="1 two sum.js"></script>
+    <script type="text/javascript" src="2 add two numbers.js"></script>
     <script type="text/javascript">
       document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("ts-1").innerHTML = twoSum(
-          [2, 7, 11, 15],
-          9
-        ).toString();
+        let llMaker = arr => {
+          let list = new ListNode(arr[0]);
+          let pointer = list;
+          for (let x = 1; x < arr.length; x++) {
+            let node = new ListNode(arr[x]);
+            pointer.next = node;
+            pointer = node;
+          }
+          return list;
+        };
+
+        let llPrint = list => {
+          let str = "( ";
+          let pointer = list;
+          while (pointer != null) {
+            str += pointer.val + " ";
+            pointer = pointer.next;
+          }
+          return str + ")";
+        };
+
+        let l1 = llMaker([9, 9, 9, 9]);
+        let l2 = llMaker([1]);
+
+        console.log(l1);
+        console.log(l2);
+        console.log(llPrint(l1));
+        console.log(llPrint(l2));
+        document.getElementById("ts-1").innerHTML = llPrint(
+          addTwoNumbers(l1, l2)
+        );
       });
     </script>
     <title>2. Add Two Numbers</title>
@@ -19,23 +46,48 @@
     <h1>2. Add Two Numbers</h1>
     <section>
       <p>
-          You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+        You are given two non-empty linked lists representing two non-negative
+        integers. <strong>The digits are stored in reverse order</strong> and
+        each of their nodes contain a single digit. Add the two numbers and
+        return it as a linked list.
+      </p>
 
-          <p>
-          You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+      <p>
+        You may assume the two numbers do not contain any leading zero, except
+        the number 0 itself.
       </p>
     </section>
     <section>
       <pre>
-		twoSum([2, 7, 11, 15], 9)
-		Result: <span id="ts-1"></span>
-	  </pre>
+          let l1 = (9, 9, 9, 9);
+          let l2 = (1);
+          addTwoNumbers(l1, l2);
+          Result: <span id="ts-1"></span>
+      </pre>
     </section>
     <section>
       <p>
-        My solution is extremely basic. We start with the first number in the
-        array and then check it against each remaining number to see if the sum
-        is equal to the target. This is repeated until a match is found.
+        Since the digits are stored in reverse order, the algorithm is basically
+        the same exact one you use to add two numbers in real life. My solution
+        involves three pointers, one for each linked list and then an additional
+        one pointing to whichever linked list is currently being traversed since
+        there is no gaurentee that both linked lists are the same length. We
+        iterate over each integer in the lists and keep track of the carry digit
+        as we go.
+      </p>
+      <p>
+        This problem wasn't exactly difficult but it was deceptively
+        complicated. You'd expect it to be really easy because it's just basic
+        operations with linked lists and grade school arirthmetic. The hardest
+        part was making sure to carry through the carry digit when you reached
+        the final digits of the lists, like for 99+1 and you end up with a three
+        digit number. At that point, both pointers will be null so we end up
+        needing to check for that during every single iteration.
+      </p>
+      <p>
+        Anyway we iterate over each list only once, the running time will just
+        be O(l1.length, l2.length). Since we never make any dummy nodes, the
+        space complexity is the same.
       </p>
     </section>
   </body>

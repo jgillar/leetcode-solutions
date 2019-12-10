@@ -1,17 +1,16 @@
-/**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
- */
+// ListNode definition directly from leetcode
+let ListNode = function(val) {
+  this.val = val;
+  this.next = null;
+};
+
 /**
  * @param {ListNode} l1
  * @param {ListNode} l2
  * @return {ListNode}
  */
 
-var addTwoNumbers = function(l1, l2) {
+let addTwoNumbers = function(l1, l2) {
   let carry = 0;
   let sum = 0;
   let pointer1 = l1;
