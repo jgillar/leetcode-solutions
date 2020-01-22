@@ -10,6 +10,11 @@
     ></script>
     <script type="text/javascript">
       document.addEventListener("DOMContentLoaded", function() {
+        function ListNode(val) {
+          this.val = val;
+          this.next = null;
+        }
+
         let llMaker = arr => {
           let list = new ListNode(arr[0]);
           let pointer = list;
@@ -31,16 +36,12 @@
           return str + ")";
         };
 
-        let l1 = llMaker([9, 9, 9, 9]);
-        let l2 = llMaker([1]);
+        let l1 = llMaker([1, 0, 0, 1]);
 
         console.log(l1);
-        console.log(l2);
         console.log(llPrint(l1));
-        console.log(llPrint(l2));
-        document.getElementById("ts-1").innerHTML = llPrint(
-          addTwoNumbers(l1, l2)
-        );
+
+        document.getElementById("ts-1").innerHTML = getDecimalValue(l1);
       });
     </script>
     <title>1290. Convert Binary Number in a Linked List to Integer</title>
@@ -57,9 +58,8 @@
     </section>
     <section>
       <pre>
-          let l1 = (9, 9, 9, 9);
-          let l2 = (1);
-          addTwoNumbers(l1, l2);
+          let l1 = (1,0,0,1);
+          getDecimalValue(l1);
           Result: <span id="ts-1"></span>
       </pre>
     </section>
@@ -68,7 +68,7 @@
         When you convert a binary number to base 10 by hand, you usually start
         with the last digit and not the first. At least that's what I do anyway.
         But since these are stored as linked lists and the digits are in normal
-        order, you can't do that. Instead another algorithm would be by
+        order, you can't do that. Instead another algorithm would consist of
         repeatedly multiplying by 2. It's literally the reverse of how you
         convert from base 10 to binary.
       </p>
