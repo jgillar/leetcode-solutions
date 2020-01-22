@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>1325. Delete Leaves with a Given Value</title>
+  </head>
+  <body>
+    <h1>1325. Delete Leaves with a Given Value</h1>
+    <section>
+      <p>
+        Given a binary tree root and an integer target, delete all the leaf
+        nodes with value target. Note that once you delete a leaf node with
+        value target, if its parent node becomes a leaf node and has the value
+        target, it should also be deleted (you need to continue doing that until
+        you can't).
+      </p>
+    </section>
+    <section>
+      <p>
+        Despite being a Medium difficulty problem, this one was actually pretty
+        easy. My solution for this is recursive. We start with the root of the
+        tree. If it's a leaf node with the target value, we're done. Otherwise,
+        we look at its left and right nodes. If both of those are leaves with
+        the target value, then they will be removed and the current root node
+        will also become a leaf. If it has the target value, then remove it.
+        That's basically it. Every time we remove a node, we have to make sure
+        that change "bubbles up" the tree.
+      </p>
+      <p>
+        Let there be n nodes in the tree. We examine each node exactly once. So,
+        the running time for this is just O(n).
+      </p>
+    </section>
+  </body>
+</html>
