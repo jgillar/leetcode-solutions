@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      type="text/javascript"
+      src="1317 convert integer to the sum of two no-zero integers.js"
+    ></script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("ts-1").innerHTML = getNoZeroIntegers(4102);
+      });
+    </script>
+    <title>1317. Convert Integer to the Sum of Two No-Zero Integers</title>
+  </head>
+  <body>
+    <h1>1317. Convert Integer to the Sum of Two No-Zero Integers</h1>
+    <section>
+      <p>
+        Given an integer n. No-Zero integer is a positive integer which doesn't
+        contain any 0 in its decimal representation.
+      </p>
+      <p>Return a list of two integers [A, B] where:</p>
+
+      <ul>
+        <li>A and B are No-Zero integers.</li>
+        <li>A + B = n</li>
+      </ul>
+      <p>
+        It's guarateed that there is at least one valid solution. If there are
+        many valid solutions you can return any of them.
+      </p>
+    </section>
+    <section>
+      <pre>
+			getNoZeroIntegers(4102);
+			Result: <span id="ts-1"></span>
+	  </pre>
+    </section>
+    <section>
+      <p>
+        My solution is to just brute force it. We iterate over integers n down
+        to 1 and stop as soon as we find two valid summands.
+      </p>
+      <p>
+        I think there's a better way to do this with some number theory but I
+        think that's really overcomplicating things. I may revisit this problem
+        if I can think of a really neat solution.
+      </p>
+    </section>
+  </body>
+</html>
