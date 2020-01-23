@@ -4,7 +4,12 @@
 //might make a more generic version for any datatype if there's a need to
 class MaxHeap {
   constructor(arr) {
-    this.heap = arr || [];
+    this.heap = [];
+    if (arr) {
+      for (let el of arr) {
+        this.insert(el);
+      }
+    }
   }
 
   insert(value) {
