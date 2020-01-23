@@ -4,7 +4,7 @@ var makeTemplate = () => {
   let title = document.querySelector("[data-cy='question-title']").textContent;
   let filename = title.toLocaleLowerCase().replace(".", "");
   let description = document.querySelector(
-    "[data-cy='question-detail-main-tabs']"
+    "div[data-cy='description-content'] > div > div:nth-child(2)"
   ).innerHTML;
   let template = `<!DOCTYPE html>
 <html lang="en">
@@ -28,12 +28,11 @@ var makeTemplate = () => {
     <h1>${title}</h1>
 	<section>
 		${description}
-	<section>
-	<section>
-	<pre>
-	  Example goes here!
-	</p>
 	</section>
+	<section>
+		<pre> Example goes here! </pre>
+	</section>
+	<section>
       <p>
         Analysis goes here!
       </p>
