@@ -37,10 +37,14 @@ class MaxHeap {
   remove() {
     //remove final element and replace first element with it
     let max = this.heap[0];
+    if (this.heap.length === 1) {
+      this.heap[0] = null;
+      return max;
+    }
     this.heap[0] = this.heap.pop();
 
     let i = 0;
-    while (i < this.heap.length - 1) {
+    while (i <= this.heap.length - 1) {
       let leftChildIndex = 2 * i + 1;
       let rightChildIndex = 2 * i + 2;
       let currentMaxIndex = i;
@@ -60,13 +64,15 @@ class MaxHeap {
         currentMaxIndex = rightChildIndex;
       }
 
+      if (this.heap[i] >= this.heap[currentMaxIndex]) {
+        break;
+      }
+
       //swap the values
       if (currentMaxIndex !== i) {
         let temp = this.heap[currentMaxIndex];
         this.heap[currentMaxIndex] = this.heap[i];
-        this.heap[i] = temp;
-
-        //jump to whatever the larger child node was
+        this.heap[i] = temp; //jump to whatever the larger child node was
         i = currentMaxIndex;
       }
     }
