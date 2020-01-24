@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="text/javascript" src="common.js"></script>
+    <script type="text/javascript" src="1046 last stone weight.js"></script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("result").innerHTML = lastStoneWeight([
+          4,
+          7,
+          6,
+          5,
+          4
+        ]);
+      });
+    </script>
+    <title>1046. Last Stone Weight</title>
+  </head>
+  <body>
+    <h1>1046. Last Stone Weight</h1>
+    <section>
+      <div>
+        <p>
+          We have a collection of rocks, each rock has a positive integer
+          weight.
+        </p>
+
+        <p>
+          Each turn, we choose the two <strong>heaviest</strong> rocks and smash
+          them together.  Suppose the stones have weights <code>x</code> and
+          <code>y</code> with <code>x <= y</code>.  The result of this smash is:
+        </p>
+
+        <ul>
+          <li>If <code>x == y</code>, both stones are totally destroyed;</li>
+          <li>
+            If <code>x != y</code>, the stone of weight <code>x</code> is
+            totally destroyed, and the stone of weight <code>y</code> has new
+            weight <code>y-x</code>.
+          </li>
+        </ul>
+
+        <p>
+          At the end, there is at most 1 stone left.  Return the weight of this
+          stone (or 0 if there are no stones left.)
+        </p>
+
+        <p></p>
+
+        <p><strong>Example 1:</strong></p>
+
+        <pre><strong>Input: </strong>[2,7,4,1,8,1]
+<strong>Output: </strong>1
+<strong>Explanation: </strong>
+We combine 7 and 8 to get 1 so the array converts to [2,4,1,1,1] then,
+we combine 2 and 4 to get 2 so the array converts to [2,1,1,1] then,
+we combine 2 and 1 to get 1 so the array converts to [1,1,1] then,
+we combine 1 and 1 to get 0 so the array converts to [1] then that's the value of last stone.</pre>
+
+        <p></p>
+
+        <p><strong>Note:</strong></p>
+
+        <ol>
+          <li><code>1 <= stones.length <= 30</code></li>
+          <li><code>1 <= stones[i] <= 1000</code></li>
+        </ol>
+      </div>
+    </section>
+    <section>
+      <h2>My Solution</h2>
+      <h3>Example Testcase</h3>
+      <pre>
+        Input: [4,7,6,5,4]
+        Expected Output: 2
+        Actual Output: <span id="result"></span></pre>
+    </section>
+    <section>
+      <h3>Analysis</h3>
+      <p>
+        There was a hint to use a heap so that's what I used. I implemented a
+        max heap and after that the problem became trivial. All we do is
+        repeatedly remove the first two elements and insert their difference.
+      </p>
+      <p>
+        Let n be the number of elements passed in. Converting the array into a
+        heap can is done in linear time but I'm not going to reiterate why
+        because I remember the proof is long and and I don't feel like typing it
+        up in LaTeX. It's a really nice proof though. I definitely did not
+        appreciate it while I was still taking Data Structure in college. I
+        didn't really get it until I took a few upper level math classes.
+      </p>
+      <p>
+        So anyway, to build the heap from the given input is O(n). Then for
+        every two elements we remove, we add insert another into the heap. An
+        upper bound for the number of insertions would be n-1 and an upper bound
+        for the number of removals would be 2n-1. Each removal and insertion
+        takes O(logn) time so the running time for this is O(nlog).
+      </p>
+    </section>
+  </body>
+</html>
