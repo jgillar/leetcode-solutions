@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="text/javascript" src="common.js"></script>
+    <script type="text/javascript" src="136 single number.js"></script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("result").innerHTML = singleNumber([
+          -7,
+          -6,
+          -7,
+          -6,
+          9
+        ]);
+      });
+    </script>
+    <title>136. Single Number</title>
+  </head>
+  <body>
+    <main>
+      <h1>136. Single Number</h1>
+      <section>
+        <h2>Description</h2>
+        <div>
+          <p>
+            Given a <strong>non-empty</strong> array of integers, every element
+            appears <em>twice</em> except for one. Find that single one.
+          </p>
+
+          <p><strong>Note:</strong></p>
+
+          <p>
+            Your algorithm should have a linear runtime complexity. Could you
+            implement it without using extra memory?
+          </p>
+
+          <p><strong>Example 1:</strong></p>
+
+          <pre><strong>Input:</strong> [2,2,1]
+<strong>Output:</strong> 1
+</pre>
+
+          <p><strong>Example 2:</strong></p>
+
+          <pre><strong>Input:</strong> [4,1,2,1,2]
+<strong>Output:</strong> 4
+</pre>
+        </div>
+      </section>
+      <section>
+        <h2>My Solution</h2>
+        <h3>Example Testcase</h3>
+        <pre>
+			Input:			[-7,-6,-7,-6,9]
+			Expected Output:	9
+			Actual Output:		<span id="result"></span>
+		</pre>
+        <h3>Analysis</h3>
+        <p>
+          The most obvious way to do this is just to iterate over every element
+          and check if it's in the array more than once. However, the problem
+          wants an algorithm that runs in linear time and this would be
+          quadratic.
+        </p>
+        <p>
+          One thing that stood out to me was how every number appears exactly
+          twice except for one. We can express that unique element as a sum of
+          the other elements in the array to determine its value. Without loss
+          of generality, assume the nth element is the unique element in the
+          array. Let b = a_1 + a_1 + ... + a_(n-1) + a_(n-1) + a_n <br />
+        </p>
+        <p>
+          Then <br />
+          2a_1 + ... + 2a_(n-1) + a_n = b<br />
+          a_n = b - (2a_1 + ... + 2a_(n-1)))<br />
+        </p>
+        <p>
+          Since we don't actually know which element is unique ahead of time, we
+          can't simply 'solve' for it. We do know the sum of the elements
+          though. If we can express the unqiue element as a combination of known
+          values, in this case the sum of elements, then we can compute it. So,
+          <br />
+          a_n - 2a_n = b - 2(a_1 + ... + a_(n-1)) - 2a_n<br />
+          -a_n = b - 2(a_1 + ... + a_n)<br />
+          -a_n = b - 2(a_1 + ... + a_n)<br />
+          a_n = 2(a_1 + ... + a_n) - b
+        </p>
+        <p>
+          Substitute for b: <br />
+          a_n = 2(a_1 + ... + a_n) - (2a_1 + ... + 2a_(n-1) + a_n) a_n = 2(sum
+          over each unique key in the array) - (sum over every element of the
+          array)
+        </p>
+        <p>
+          To get these sums, all we need to do is iterate over the array
+          elements twice. This is O(n). JavaScript has built-in functionality to
+          get unique keys from arrays using Set objects.
+          <a
+            href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-set-objects"
+            >According to the official ECMA website, this is a sublinear
+            operation.</a
+          >
+          So ultimately the complexity for my algorithm is just O(n).
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
