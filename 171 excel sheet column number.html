@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="text/javascript" src="common.js"></script>
+    <script
+      type="text/javascript"
+      src="171 excel sheet column number.js"
+    ></script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("result1").innerHTML = titleToNumber("AB");
+        document.getElementById("result2").innerHTML = titleToNumber("CATS");
+      });
+    </script>
+    <title>171. Excel Sheet Column Number</title>
+  </head>
+  <body>
+    <main>
+      <h1>171. Excel Sheet Column Number</h1>
+      <section>
+        <h2>Description</h2>
+        <div>
+          <p>
+            Given a column title as appear in an Excel sheet, return its
+            corresponding column number.
+          </p>
+
+          <p>For example:</p>
+
+          <pre>
+    A -> 1
+    B -> 2
+    C -> 3
+    ...
+    Z -> 26
+    AA -> 27
+    AB -> 28 
+    ...
+</pre
+          >
+
+          <p><strong>Example 1:</strong></p>
+
+          <pre><strong>Input:</strong> "A"
+<strong>Output:</strong> 1
+</pre>
+
+          <p><strong>Example 2:</strong></p>
+
+          <pre><strong>Input: </strong>"AB"
+<strong>Output:</strong> 28
+</pre>
+
+          <p><strong>Example 3:</strong></p>
+
+          <pre><strong>Input: </strong>"ZY"
+<strong>Output:</strong> 701
+</pre>
+        </div>
+      </section>
+      <section>
+        <h2>My Solution</h2>
+        <h3>Example Testcase</h3>
+        <pre>
+Input:			AB
+Expected Output:	28	
+Actual Output:		<span id="result1"></span>
+
+Input:			CATS
+Expected Output:	53943	
+Actual Output:		<span id="result2"></span>
+		</pre>
+        <h3>Analysis</h3>
+        <p>
+          This was a cute little problem. We're basically working with base 26,
+          so a string like ABC would be A*26^2 + B*26^1 + C*26^0. The algorithm
+          is exactly the same as converting binary to decimal only we work with
+          powers of 26 instead of 2.
+        </p>
+        <p>
+          I liked this problem a lot even if it was easy. I never thought about
+          why Excel's columns are named the way they are before. I mean I always
+          made the connection that you had columns A-Z and then AA, AB, etc. for
+          27, 28, etc. It's just that this really made me realize it's a lot
+          easier typing, say, CATS9 instead of having to type something like
+          53943,9. Though I'm not sure what kind of spreadsheet would have
+          50,000+ columns. Apparently Microsoft has asked this question in some
+          of their coding interviews. I find that really nice for reason.
+        </p>
+        <p>
+          So anyway, since we iterate over each letter of the string exactly
+          once, the running time for this algorithm is just O(n) where n is the
+          length of the string.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
