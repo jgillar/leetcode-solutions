@@ -85,3 +85,10 @@ class MaxHeap {
     return this.heap[0];
   }
 }
+
+//Definition for a binary tree node.
+//taken stragiht from leetcode
+function TreeNode(val) {
+  this.val = val;
+  this.left = this.right = null;
+}
