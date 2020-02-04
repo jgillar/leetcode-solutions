@@ -1,6 +1,12 @@
+/* 
+This is a simple script to generate a template from any leetcode exercise
+Basically it just pulls the description text and title
+If you want to use this for some reason, just go to any problem on leetcode 
+and run this code once the description pane is fully loaded
+You can also create a bookmarklet by creating a new bookmark and setting 
+the URL to be the code in template_generator_bookmarklet.js 
+*/
 (function() {
-  //this is a simple script to generate a template from any leetcode exercise
-  //basically it just pulls the description text and title
   let makeTemplate = () => {
     let title = document.querySelector("[data-cy='question-title']")
       .textContent;

@@ -9,9 +9,9 @@ let permute = function(nums) {
   return permuteHelper(nums, arr, result);
 };
 
-let permuteHelper = function(choices, arr, result) {
+let permuteHelper = function(choices, currentPermutation, result) {
   if (choices.length === 0) {
-    result.push([...arr]);
+    result.push([...currentPermutation]);
   }
 
   for (let i = 0; i < choices.length; i++) {
@@ -20,12 +20,12 @@ let permuteHelper = function(choices, arr, result) {
     //have to work with a copy
     let newChoices = [...choices.slice(0, i), ...choices.slice(i + 1)];
     //add current to current permutation we're building
-    arr.push(choices[i]);
+    currentPermutation.push(choices[i]);
 
-    permuteHelper(newChoices, arr, result);
+    permuteHelper(newChoices, currentPermutation, result);
 
     //when we 'backtrack' up the recursion tree we need to remove the last added number to the current permutation
-    arr.pop();
+    currentPermutation.pop();
   }
 
   return result;
