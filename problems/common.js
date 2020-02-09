@@ -88,9 +88,11 @@ class MaxHeap {
 
 //Definition for a binary tree node.
 //taken stragiht from leetcode
-function TreeNode(val) {
-  this.val = val;
-  this.left = this.right = null;
+class TreeNode {
+  constructor(val) {
+    this.val = val;
+    this.left = this.right = null;
+  }
 }
 
 function arrayToString(arr) {
@@ -101,4 +103,12 @@ function arrayToString(arr) {
     }) +
     "]"
   );
+}
+
+//Definition for singly-linked list.
+class ListNode {
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+  }
 }
