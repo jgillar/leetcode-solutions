@@ -112,3 +112,24 @@ class ListNode {
     this.next = null;
   }
 }
+
+function buildList(arr) {
+  let node = new ListNode(arr[0]);
+  let list = node;
+  let x = 1;
+  while (x < arr.length) {
+    node.next = new ListNode(arr[x]);
+    node = node.next;
+    x++;
+  }
+  return list;
+}
+function listToString(head) {
+  let res = "" + head.val;
+  head = head.next;
+  while (head !== null) {
+    res += "->" + head.val;
+    head = head.next;
+  }
+  return res;
+}
