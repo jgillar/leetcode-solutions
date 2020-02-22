@@ -1,5 +1,5 @@
 /* 
-This is a simple script to generate a template from any leetcode exercise
+This is a simple script to generate a writeup template from any leetcode exercise
 Basically it just pulls the description text and title
 If you want to use this for some reason, just go to any problem on leetcode 
 and run this code once the description pane is fully loaded
