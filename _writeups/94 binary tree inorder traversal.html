@@ -1,0 +1,28 @@
+<h4>Recursive</h4>
+<p>
+  This problem is ranked as Medium because it asks you for two solutions, one
+  recursive and one iterative. The recursive one is easy and the iterative one
+  is trickier. I wanted to do both. The recursive one is extremely
+  straightforward. For a given node, we look at the subtree and traverse that.
+  Then we look at the node's value. Then we look at the right subtree.
+</p>
+<h4>Iterative</h4>
+<p>
+  This way is more complicated. I initially tried this by searching for the
+  leftmost leaf and keeping an array of all nodes visited along the way as well
+  as the level of the tree. This worked for some of the test cases that I tried
+  but not all of them, namely the ones with more than two levels. I wasn't sure
+  where to go from there so I looked at the solution and it said to use a stack.
+  That's almost what I was doing and I can't believe I didn't think of that.
+  Looking back I'm not sure why I wanted to keep track of the level rather than
+  just look at the parent node was. Also, I know what you're thinking and no, I
+  didn't look at the code. Just the diagram.
+</p>
+<p>
+  Anyway, here's the algorithm. We start at the root of the tree. We push the
+  current node onto the stack. Then we move to the left subtree and repeat this
+  process until we reach a leaf node. At this point we move back upwards to the
+  node on top of the stack. Since the left subtree for that node has already
+  been traversed, we move down to the right subtree. We repeat this entire
+  process until the stack is empty.
+</p>

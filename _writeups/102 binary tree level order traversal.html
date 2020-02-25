@@ -1,0 +1,13 @@
+<p>
+  This is basically just breadth-first search. The only difference here is that
+  we need to keep track of which nodes are in which level so it's not as simple
+  as just regular BFS. To start, we create a queue for nodes we discover as we
+  traverse the tree and enqueue the root. We then add the root to the list of
+  nodes on the current level. Then enqueue the root's children and add the list
+  of nodes at that level to the main list of lists of nodes. We then "move" to
+  the next level and repeat this process until the queue is empty.
+</p>
+<p>
+  We visit every node in the tree exactly once so the running time is just O(n)
+  where n is the number of nodes.
+</p>

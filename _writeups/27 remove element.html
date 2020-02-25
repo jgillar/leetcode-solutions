@@ -1,0 +1,18 @@
+---
+title: 27. Remove Element
+---
+
+<p>
+  The idea here is to only keep track of the valid numbers as we iterate over
+  the array. We have a lagging pointer that only advances when we see a valid
+  number. When we find a new valid number, we override the lagging pointer with
+  it. If we see an invalid number, we skip over it and don't do anything. As we
+  are only iterating over the array once, the running time is O(n) where n is
+  the length of the nums array.
+</p>
+<p>
+  My first idea was to simply switch the invalid number with whatever the next
+  element in the array was. This actually worked well until an array had two
+  invalid numbers in a row. Then I realized it would just be easier to look at
+  the valid numbers instead of the invalid ones.
+</p>

@@ -1,0 +1,48 @@
+ 
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+let levelOrder = function(root) {
+    //check if the tree is empty first
+    if(!root){
+        return [];
+    }
+    
+    let discovered = [root];
+    let levels = [];
+    
+    while(discovered.length){
+        let levelArr = []
+​
+        //at this point, all the nodes in the queue belong to same level
+        //look at the children of each node in the queue and unqueue them
+        let numInCurrentLevel = discovered.length;
+        for(let i = 0; i < numInCurrentLevel; i++){
+                    let node = discovered.shift();
+                    levelArr.push(node.val);
+            
+                    if(node.left){
+                        discovered.push(node.left)
+                    }
+                    if(node.right){
+                        discovered.push(node.right)
+                    }
+        }
+        
+        levels.push(levelArr)
+        
+    }
+    
+    return levels;
+};
+​
+​
+			

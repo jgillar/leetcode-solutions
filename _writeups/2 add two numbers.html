@@ -1,0 +1,26 @@
+---
+title: 1. Add Two Numbers
+---
+
+<p>
+  Since the digits are stored in reverse order, the algorithm is basically the
+  same exact one you use to add two numbers in real life. My solution involves
+  three pointers, one for each linked list and then an additional one pointing
+  to whichever linked list is currently being traversed since there is no
+  gaurentee that both linked lists are the same length. We iterate over each
+  integer in the lists and keep track of the carry digit as we go.
+</p>
+<p>
+  This problem wasn't exactly difficult but it was deceptively complicated.
+  You'd expect it to be really easy because it's just basic operations with
+  linked lists and grade school arirthmetic. The hardest part was making sure to
+  carry through the carry digit when you reached the final digits of the lists,
+  like for 99+1 and you end up with a three digit number. At that point, both
+  pointers will be null so we end up needing to check for that during every
+  single iteration.
+</p>
+<p>
+  Anyway we iterate over each list only once, the running time will just be
+  O(l1.length, l2.length). Since we never make any dummy nodes, the space
+  complexity is the same.
+</p>
