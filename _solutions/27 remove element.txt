@@ -9,19 +9,19 @@ language: javascript
  * @return {number}
  */
 var removeElement = function(nums, val) {
-    let lag = 0;
-    
-    for(let x = 0; x < nums.length; x++){
-            if(nums[x] === val){
-                continue;
-            }
-            else{
-                nums[lag] = nums[x];
-                console.log(nums)
-                lag++;
-            }   
-    }
-    return lag;
+    let lag = 0;
+    
+    for(let x = 0; x < nums.length; x++){
+            if(nums[x] === val){
+                continue;
+            }
+            else{
+                nums[lag] = nums[x];
+                console.log(nums)
+                lag++;
+            }   
+    }
+    return lag;
 };
 ​
 			

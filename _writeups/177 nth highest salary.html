@@ -1,0 +1,11 @@
+---
+title: 177. Nth Highest Salary
+language: sql
+---
+
+<p>
+  This one is basically the same as the 2nd Highest Salary problem, only this
+  time instead of using a hardcoded value for the offset, we have a variable
+  now. We get the unique salaries and sort them so they're in order. Then we
+  select the one at offset N-1 since OFFSET is from the first row.
+</p>

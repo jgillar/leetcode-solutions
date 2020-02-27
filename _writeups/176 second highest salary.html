@@ -1,0 +1,14 @@
+---
+title: 176. Second Highest Salary
+---
+
+<p>
+  This one was easy. We simply select all the unique salaries and sort them so
+  they're in order. Then we just select the one with an offset of 2.
+</p>
+<p>
+  By the way, the OFFSET/FETCH syntax for MS SQL is so overly verbose and super
+  reundant. In mySQL all you need is LIMIT and OFFSET. None of this FETCH
+  FIRST/NEXT x ROW/ROWS stuff. And what's worse is that FIRST/NEXT are literally
+  the same, same with ROW/ROWS.
+</p>

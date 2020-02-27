@@ -1,0 +1,15 @@
+---
+title: 178. Rank Scores
+---
+
+<p>
+  This one was very easy to implement but kind of hard to come up with the
+  solution for It took me awhile to realize that if we just look at the unique
+  salaries in the table, you can very easily figure out the rank. For any score,
+  its rank is just the number of scores larger than it. So if the score is rank
+  1, then it's the largest. By only considering the unique scores in the table,
+  we never have to deal with 'gaps' in rank when there are duplicates. This kind
+  of tripped me up at first. The ranks of my scores would look something like 1,
+  2, 2, 4, ... Simply looking only at distinct scores instead completely fixed
+  everything.
+</p>

@@ -1,0 +1,15 @@
+---
+title: 627. Swap Salary
+language: sql
+---
+
+UPDATE salary 
+SET sex =
+    (
+        CASE
+            WHEN sex = 'm' THEN 'f'
+            ELSE 'm'
+        END
+    )
+​
+			

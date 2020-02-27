@@ -1,0 +1,13 @@
+---
+title: 181. Employees Earning More Than Their Managers
+language: sql
+---
+
+​
+SELECT e.[name] as 'Employee'
+FROM Employee AS e
+INNER JOIN Employee AS m
+ON m.id = e.managerid
+WHERE e.salary > m.salary
+​
+			

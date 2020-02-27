@@ -1,0 +1,22 @@
+---
+title: 626. Exchange Seats
+language: sql
+---
+
+SELECT 
+    CASE
+        --final row and odd; do nothing
+        WHEN s.id % 2 = 1 AND s.id = (SELECT COUNT(id) FROM seat)
+            THEN s.id
+        --odd row; swap with next row
+        WHEN s.id % 2 = 1
+            THEN s.id + 1
+        --even row; swap with previous
+        WHEN s.id % 2 = 0
+            THEN s.id - 1
+    END
+AS id, s.student
+FROM seat AS s
+ORDER BY id
+​
+			

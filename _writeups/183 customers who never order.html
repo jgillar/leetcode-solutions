@@ -1,0 +1,12 @@
+---
+title: 183. Customers Who Never Order
+---
+
+<p>
+  This one was easy. We just do a LEFT JOIN which on the Customers table. A LEFT
+  JOIN returns every row in the first table along with any matched records in
+  the second. Not every single record in the first will have a match but if it
+  doesn't, it will still be in the joined table. That means a LEFT JOIN is
+  perfect for figuring out which records are in the first table but not the
+  second.
+</p>

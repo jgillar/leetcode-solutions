@@ -1,0 +1,10 @@
+---
+title: 197. Rising Temperature
+language: sql
+---
+
+SELECT w1.Id AS 'Id'
+FROM Weather AS w1, Weather AS W2
+WHERE DATEDIFF(day, w2.RecordDate, w1.RecordDate) = 1 
+AND
+w1.Temperature > w2.Temperature

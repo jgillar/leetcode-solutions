@@ -1,0 +1,17 @@
+---
+title: 626. Exchange Seats
+---
+
+<p>
+  I had to think about this one for awhile but actually writing the solution was
+  easy.
+</p>
+<p>
+  My first thought was to join the table with itself and look at each possible
+  pair of students and swap the ones with conscutive ID numbers. But then I
+  realized that's unnecessary. You can just directly change the ID numbers.
+  That's it. Odd numbered IDs get their ID increased by one, even number IDs get
+  them descreased by 1. If you have an odd number of students, you can't
+  increase their ID since that would mean you have an extra student out of
+  nowhere. So instead we just leave it alone.
+</p>

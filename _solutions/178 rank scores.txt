@@ -1,0 +1,14 @@
+---
+title: 178. Rank Scores
+language: sql
+---
+
+
+SELECT s1.Score, 
+    (
+        SELECT COUNT ( DISTINCT Score )
+        FROM Scores AS s2
+        WHERE s2.Score >= s1.Score
+     ) as Rank
+FROM Scores as s1
+ORDER BY s1.Score DESC

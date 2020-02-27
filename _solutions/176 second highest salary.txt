@@ -1,0 +1,17 @@
+---
+title: 176. Second Highest Salary
+language: sql
+---
+
+
+IF (SELECT COUNT(DISTINCT Salary) FROM Employee) < 2
+    SELECT NULL AS 'SecondHighestSalary'
+ELSE
+    BEGIN
+        SELECT DISTINCT Salary 
+        AS 'SecondHighestSalary'
+        FROM Employee
+        ORDER BY Salary DESC
+        OFFSET 1 ROW
+        FETCH NEXT 1 ROW ONLY
+    END
