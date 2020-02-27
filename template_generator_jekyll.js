@@ -9,30 +9,39 @@ description HTML so I can use it for my writeup pages
     let filename = title.toLocaleLowerCase().replace(".", "");
 
     let description =
-      `<section>
+      `
+---
+title: ${title}
+---
+      <section>
 		<h2>Description</h2>` +
       document.querySelector(
         "div[data-cy='description-content'] > div > div:nth-child(2)"
       ).innerHTML +
       `</section>`;
 
-    //grab the solution code
-    //need to copy line  by line instead of copying the container's innerText
-    //because of line numbers
-    let solution = "";
-    document.querySelectorAll("pre.CodeMirror-line").forEach(val => {
-      solution += "/n" + val.innerText;
+    //grab the solution code from localStorage
+    //this prevents the weird formatting issues
+    //that happen when copying the code off the page
+    //solution keys are formatted nn_mmmmmm_language
+    let solutionKey = Object.keys(localStorage).filter(key => {
+      return key.match(
+        `^${title.slice(0, title.indexOf("."))}.*(javascript|c|java|php|sql)$`
+      );
     });
+    //substring() offset is 1 because the values are wrapped in ""s
+    let solution = localStorage.getItem(solutionKey).replace(/\\n/gi, "\n");
+    solution = solution.trimEnd().substring(1, solution.length - 1);
 
     let dialog = `
   <div id="lcs-dialog">
 		<section>
 			<p id="lcs-title">${title}</p>
 			<label for="lcs-description">Description markup:</label>
-			<textarea name="lcs-description" rows="1">${description}</textarea>
+			<textarea name="lcs-description" rows="3">${description}</textarea>
 
 			<label for="lcs-solution">Solution markup:</label>
-			<textarea name="lcs-solution" rows="1">
+			<textarea name="lcs-solution" rows="3">
 ---
 title: ${title}
 language: javascript
@@ -74,9 +83,10 @@ ${solution}
 			  display: block;
 		  }
 		  #lcs-dialog textarea, input{
-			  display: block;
+        display: block;
+        font-family: Courier, monospaced;
 			  margin: 10px 0px;
-			  padding: 10px;
+			  padding: 2px 10px;
 			  width: 100%;
 		  }
 	  </style>
@@ -128,7 +138,7 @@ ${solution}
       ).value;
 
       download(filename + ".html", description);
-      download(filename + ".js", solution);
+      download(filename + ".txt", solution);
     }
   });
 })();
