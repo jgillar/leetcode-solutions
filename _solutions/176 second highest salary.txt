@@ -3,7 +3,6 @@ title: 176. Second Highest Salary
 language: sql
 ---
 
-
 IF (SELECT COUNT(DISTINCT Salary) FROM Employee) < 2
     SELECT NULL AS 'SecondHighestSalary'
 ELSE

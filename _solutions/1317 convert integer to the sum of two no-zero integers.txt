@@ -1,0 +1,19 @@
+---
+title: 1317. Convert Integer to the Sum of Two No-Zero Integers
+language: javascript
+---
+/**
+ * @param {number} n
+ * @return {number[]}
+ */
+let getNoZeroIntegers = function(n) {
+  let n1 = n - 1;
+  let n2 = n - n1;
+
+  while (n1.toString().indexOf("0") != -1 || n2.toString().indexOf("0") != -1) {
+    n1--;
+    n2 = n - n1;
+  }
+
+  return [n1, n - n1];
+};

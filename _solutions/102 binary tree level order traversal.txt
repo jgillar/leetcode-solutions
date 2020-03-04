@@ -1,8 +1,7 @@
 ---
 title: 102. Binary Tree Level Order Traversal
+language: javascript
 --- 
-
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -47,6 +46,3 @@ let levelOrder = function(root) {
     
     return levels;
 };
-​
-​
-			

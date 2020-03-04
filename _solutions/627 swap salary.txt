@@ -11,5 +11,3 @@ SET sex =
             ELSE 'm'
         END
     )
-​
-			

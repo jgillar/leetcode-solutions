@@ -42,5 +42,4 @@ var inorderTraversal = function(root) {
   
     return list;
     }
-​
-			
+	

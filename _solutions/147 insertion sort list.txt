@@ -1,0 +1,40 @@
+---
+title: 147. Insertion Sort List
+language: javascript
+---
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+let insertionSortList = function(head) {
+  let current = head;
+  let list = null;
+  let previous = null;
+
+  while (current !== null) {
+    let next = current.next;
+    let insertAfter = list;
+
+    //insert at beginning of list
+    if (list === null || current.val <= list.val) {
+      current.next = list;
+      list = current;
+    } else {
+      while (insertAfter.next !== null && insertAfter.next.val < current.val) {
+        insertAfter = insertAfter.next;
+      }
+      current.next = insertAfter.next;
+      insertAfter.next = current;
+    }
+    current = next;
+  }
+
+  return list;
+};

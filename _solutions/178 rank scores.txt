@@ -3,7 +3,6 @@ title: 178. Rank Scores
 language: sql
 ---
 
-
 SELECT s1.Score, 
     (
         SELECT COUNT ( DISTINCT Score )

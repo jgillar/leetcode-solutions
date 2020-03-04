@@ -1,0 +1,11 @@
+---
+title: 1108. Defanging an IP Address
+language: javascript
+---
+/**
+ * @param {string} address
+ * @return {string}
+ */
+let defangIPaddr = function(address) {
+    return address.replace(/\./g, "[.]");
+};

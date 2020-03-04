@@ -18,5 +18,3 @@ SELECT
 AS id, s.student
 FROM seat AS s
 ORDER BY id
-​
-			
