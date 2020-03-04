@@ -7,7 +7,9 @@ description HTML so I can use it for my writeup pages
     let title = document.querySelector("[data-cy='question-title']")
       .textContent;
     let filename = title.toLocaleLowerCase().replace(".", "");
-
+    let language = document
+      .querySelector("div[data-cy='lang-select']")
+      .innerText.toLowerCase();
     let description =
       `
 ---
@@ -24,14 +26,17 @@ title: ${title}
     //this prevents the weird formatting issues
     //that happen when copying the code off the page
     //solution keys are formatted nn_mmmmmm_language
+    let questionNumber = document.querySelector("form input[name='question']")
+      .value;
     let solutionKey = Object.keys(localStorage).filter(key => {
-      return key.match(
-        `^${title.slice(0, title.indexOf("."))}.*(javascript|c|java|php|sql)$`
-      );
+      return key.match(`^${questionNumber}.*${language}$`);
     });
+
     //substring() offset is 1 because the values are wrapped in ""s
-    let solution = localStorage.getItem(solutionKey).replace(/\\n/gi, "\n");
-    solution = solution.trimEnd().substring(1, solution.length - 1);
+    let solution = localStorage.getItem(solutionKey[0]).replace(/\\n/gi, "\n");
+    solution = solution
+      .substring(1, solution.length - 1)
+      .replace(/\n*\t*/gi, "");
 
     let dialog = `
   <div id="lcs-dialog">
@@ -41,13 +46,13 @@ title: ${title}
 			<textarea name="lcs-description" rows="3">${description}</textarea>
 
 			<label for="lcs-solution">Solution markup:</label>
-			<textarea name="lcs-solution" rows="3">
+<textarea name="lcs-solution" rows="3">
 ---
 title: ${title}
-language: javascript
+language: ${language}
 ---
 ${solution}
-			</textarea>
+</textarea>
 
 			<button id="lcs-download">Download files</button>
 
@@ -133,12 +138,15 @@ ${solution}
       let solution = document.querySelector(
         "#lcs-dialog textarea[name='lcs-solution']"
       ).value;
+      let writeup =
+        description.slice(0, description.lastIndexOf("---") + 3) + "\n";
       let filename = document.querySelector(
         "#lcs-dialog input[name='lcs-filename']"
       ).value;
 
       download(filename + ".html", description);
       download(filename + ".txt", solution);
+      download(filename + "_w.html", writeup);
     }
   });
 })();
