@@ -36,7 +36,7 @@ title: ${title}
     let solution = localStorage.getItem(solutionKey[0]).replace(/\\n/gi, "\n");
     solution = solution
       .substring(1, solution.length - 1)
-      .replace(/\n*\t*/gi, "");
+      .replace(/\n*\t*$/gi, "");
 
     let dialog = `
   <div id="lcs-dialog">
