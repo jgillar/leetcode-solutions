@@ -1,0 +1,24 @@
+---
+title: 1046. Last Stone Weight
+---
+
+<p>
+  There was a hint to use a heap so that's what I used. I implemented a max heap
+  and after that the problem became trivial. All we do is repeatedly remove the
+  first two elements and insert their difference.
+</p>
+<p>
+  Let n be the number of elements passed in. Converting the array into a heap
+  can is done in linear time but I'm not going to reiterate why because I
+  remember the proof is long and and I don't feel like typing it up in LaTeX.
+  It's a really nice proof though. I definitely did not appreciate it while I
+  was still taking Data Structure in college. I didn't really get it until I
+  took a few upper level math classes.
+</p>
+<p>
+  So anyway, to build the heap from the given input is O(n). Then for every two
+  elements we remove, we add insert another into the heap. An upper bound for
+  the number of insertions would be n-1 and an upper bound for the number of
+  removals would be 2n-1. Each removal and insertion takes O(logn) time so the
+  running time for this is O(nlog).
+</p>

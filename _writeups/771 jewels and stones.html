@@ -1,0 +1,17 @@
+---
+title: 771. Jewels and Stones
+---
+
+<p>
+  This was a simple problem. First we split the jewel and stone strings into
+  arrays. Then we iterate over each jewel and count the number of times it
+  occurs in the stone array. The running time would be O(js) where j is the
+  length of the jewel string and s is the length of the stone string.
+</p>
+<p>
+  If we check if the stone string contains the jewel before iterating over it,
+  we improve the running time slightly. With this optimization, the time is 56ms
+  versus 60ms without. It's still going to be O(js) though. I'm trying to think
+  of an even better way to do this problem but I think this might be the
+  simplest way.
+</p>

@@ -1,0 +1,25 @@
+---
+title: 171. Excel Sheet Column Number
+---
+
+<p>
+  This was a cute little problem. We're basically working with base 26, so a
+  string like ABC would be A*26^2 + B*26^1 + C*26^0. The algorithm is exactly
+  the same as converting binary to decimal only we work with powers of 26
+  instead of 2.
+</p>
+<p>
+  I liked this problem a lot even if it was easy. I never thought about why
+  Excel's columns are named the way they are before. I mean I always made the
+  connection that you had columns A-Z and then AA, AB, etc. for 27, 28, etc.
+  It's just that this really made me realize it's a lot easier typing, say,
+  CATS9 instead of having to type something like 53943,9. Though I'm not sure
+  what kind of spreadsheet would have 50,000+ columns. Apparently Microsoft has
+  asked this question in some of their coding interviews. I find that really
+  nice for reason.
+</p>
+<p>
+  So anyway, since we iterate over each letter of the string exactly once, the
+  running time for this algorithm is just O(n) where n is the length of the
+  string.
+</p>

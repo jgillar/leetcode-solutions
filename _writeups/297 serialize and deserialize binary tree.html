@@ -1,0 +1,49 @@
+---
+title: 297. Serialize and Deserialize Binary Tree
+---
+
+<p>
+  leetcode's problem descrption says we can use any format we want we serialize
+  the tree so my format is not 100% like the one they use. I really do not like
+  how they're not explicit with their leaf nodes. I never liked it at all when I
+  started working through these problems. So, my format explicitly shows null
+  child nodes. It is uglier but I think it's way less confusing to look at.
+</p>
+<h4>serialize()</h4>
+<p>
+  This is essentially just level-order traversal. The only change is that we
+  build up a string containing all of the nodes' values as we traverse the tree.
+  The algorithm is as follows: make a queue to hold discovered nodes. Start with
+  the root and queue it. While there are still nodes in the queue, dequeue each
+  one and enqueue its child nodes. Add the dequeued node's value to the
+  serialized string. Repeat this process until the queue is empty.
+</p>
+<p>
+  The running time complexity is simply O(n) as we visit each node in the tree
+  exactly once and queueing/dequeueing are both O(1) operations. The queue will
+  only ever have at most two full levels of nodes in it at any given time, so
+  space complexity is also simply O(n).
+</p>
+<h4>deserialize()</h4>
+<p>
+  This is actually much easier than serialize(). We get a serialized string and
+  create an array from it. We iterate over each element and create a new node
+  and then queue its two children. We know
+  <em>for sure</em>
+  that the next two elements in the array correspond to the current node's
+  children because I explicitly coded serialize() to
+  <em>always</em> include null child nodes, regardless of position on the tree.
+  I am quite happy I decided to do it this way.
+</p>
+<p>
+  We iterate over the array of node values exactly once. We also queue/dequeue n
+  nodes once each. The running time complexity is O(n). The space complexity is
+  also O(n) for the same reasons serialize() is.
+</p>
+<h3>Thoughts</h3>
+<p>
+  This was a great problem. I am especially glad I picked this one to complete
+  because now I have two great functions to use for my writeups. Lately I have
+  been focusing on problems dealing with data structures and now I can easily
+  create trees for my example sections.
+</p>

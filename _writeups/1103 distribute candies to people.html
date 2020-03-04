@@ -1,0 +1,18 @@
+---
+title: 1103. Distribute Candies to People
+---
+      <p>
+        My solution is simple. We create an array of num_people and then iterate
+        over the number of candies. The running time will be O(max(candies,
+        num_people)).
+      </p>
+      <p>
+        One interesting thing I noticed while submitting my solution is that
+        it's a little bit faster to keep a running total of the number of
+		candies given away versus calculating the total using x(x+1)/2. Also, 
+		it's significantly faster to do
+		<pre>arr[x % num_people] += x + 1;</pre>
+		rather than
+		<pre>arr[x % num_people] = arr[x % num_people] + x + 1;</pre>
+		I know it's because when you assign through +=, the system only has to access that memory location once versus twice the other way. Normally I always use += but for whatever reason, I forgot this time. I just wanted to point that out here because it was kind of cool seeing just how much of a difference it makes. The first way yields a runtime of 48ms/faster than 97% of other JavaScript solutions versus 60ms/40% faster than other solutions. 12ms does not seem like a huge difference but I imagine when you're dealing with massive datasets and you don't have unlimited resources to process them, that difference will matter.
+      </p>
