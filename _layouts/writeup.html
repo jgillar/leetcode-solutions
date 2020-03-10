@@ -13,8 +13,21 @@ layout: default
   <h2>My Solution</h2>
   <!-- source code for solution -->
   <h3>Source Code</h3>
-  {% highlight javascript lineos %} {% assign solution = site.solutions | where:
-  "title", page.title | first %} {{solution.content}} {% endhighlight %}
+  {% assign solution = site.solutions | where: "title", page.title | first %}
+
+  {% comment %}
+  Liquid doesn't allow for passing in variables to tags, so
+  instead we just use a case statement for every language type...
+  {% endcomment%} 
+  {% case solution.language %}
+    {% when "javascript" %}
+      {% highlight javascript linenos %}{{solution.content}}{% endhighlight %}
+    {% when "sql" %}
+      {% highlight sql linenos %}{{solution.content}}{% endhighlight %}
+    {% else %}
+      {% highlight linenos %}{{solution.content}}{% endhighlight %}
+  {% endcase %}
+ 
   <!-- end source code -->
 
   <!-- writeup -->

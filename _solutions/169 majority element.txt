@@ -1,0 +1,12 @@
+---
+title: 169. Majority Element
+language: javascript
+---
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+let majorityElement = function(nums) {
+    nums = nums.sort();
+    return nums[Math.floor((nums.length) / 2)]
+};
