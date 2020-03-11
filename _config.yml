@@ -8,8 +8,8 @@ title: Leetcode Solutions
 email: jamie.gillar@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   These are my solutions to problems on leetcode along with some simple wrteups.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "jgillar.github.io/leetcode-solutions" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/leetcode-solutions" # the subpath of your site, e.g. /blog
+url: "https://jgillar.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jgillar
 github_username: jgillar
 
