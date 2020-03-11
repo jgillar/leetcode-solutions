@@ -36,7 +36,7 @@ layout: default
 	{% for solution in databaseproblems %}
 		{% assign writeup = site.writeups | where:"title", solution.title | first %}
     	<li>
-			<a href="{{writeup.url}}">
+			<a href="{{ writeup.url | prepend:site.baseurl }}">
 				{{ writeup.title }}
 			</a>
 		</li>
