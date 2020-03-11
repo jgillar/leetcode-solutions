@@ -1,1 +1,3 @@
+You should view this on [GitHub Pages](https://jgillar.github.io/leetcode-solutions/) instead of viewing invidiual source code files.
+
 I decided to slowly work my way through [LeetCode](https://leetcode.com/), a website that contains coding problems ranging in difficulty and topics including data structures and algorithms. My goal is to complete a few problems a week. I don't have a particular pattern for selecting problems, I usually just pick whatever sounds most interesting based on the title or by choosing one at random. My solutions are usually going to be written in JavaScript and I'll try to include a short write-up with my thoughts on the problem along with an analysis for whatever algorithm I come up with.
