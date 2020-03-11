@@ -22,7 +22,7 @@ highlighter: rouge
 collections:
   writeups:
     output: true
-    permalink: /writeups/:name/
+    permalink: /writeups/:title/
   solutions:
     output: false
   descriptions:
@@ -49,7 +49,3 @@ defaults:
 #   - Gemfile
 #   - Gemfile.lock
 #   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
