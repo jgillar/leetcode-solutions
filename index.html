@@ -20,7 +20,7 @@ layout: default
 	{% for solution in algoproblems %}
 		{% assign writeup = site.writeups | where:"title", solution.title | first %}
     	<li>
-			<a href="{{writeup.url}}">
+			<a href="{{ writeup.url | relative_url }}">
 				{{ writeup.title }}
 			</a>
 		</li>
