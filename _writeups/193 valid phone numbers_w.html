@@ -1,0 +1,41 @@
+---
+title: 193. Valid Phone Numbers
+---
+
+<p>
+  So this is probably going to sound terrible but I didn't actually know there
+  were different implementations of POSIX regular expressions. I learned today
+  there are Basic Regular Expressions and Extended Regular Expressions. ERE are
+  what I've been using my entire programming-related life. Some of the
+  differences between BRE and ERE include <code>{}</code>,
+  <code>()</code> needing to be escaped in BRE and ERE having <code>+</code>,
+  <code>?</code>, and <code>|</code>. When you use <code>grep</code>, by default
+  it takes an ERE. I've used <code>grep</code> before but only with absolutely
+  basic regular expressions, like just matching a specific word. To use
+  <code>grep</code> with a ERE, you would use <code>grep -E</code>.
+</p>
+<p>
+  Anyway, the regular expression I came up is not that complicated. Basically I
+  started with the simplest test case, a number formatted
+  <code>xxx-xxx-xxxx</code> and worked my way up.
+</p>
+<p>
+  <code>^[0-9]{3}-[0-9]{3}-[0-9]{4}$</code> matches <code>xxx-xxx-xxxx</code>
+</p>
+<p>
+  <code>/(?[0-9]{3}/)?-[0-9]{3}-[0-9]{4}</code> will also match
+  <code>(xxx)-xxx-xxxx</code> which isn't actually valid but it's a start.
+</p>
+<p>
+  Area codes that are wrapped in <code>()</code> must be followed by a space.
+  Likewise area codes not wrapped in <code>()</code> must be followed by hyphen.
+  To match this pattern, I used:
+</p>
+<p>
+  <code>(\([0-9]{3}\) |[0-9]{3}-)</code>
+</p>
+<p>Putting it all together:</p>
+<p>
+  <code>^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$</code>
+</p>
+<p>And that's about it.</p>

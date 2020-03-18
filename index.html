@@ -43,3 +43,19 @@ layout: default
     {% endfor %}
   </ul>
 </section>
+
+<section>
+	<h2>Shell</h2>
+	<ul>
+	  {% assign shellproblems = site.solutions | 
+		  where_exp:"item", "item.language == 'bash'" %} 
+	  {% for solution in shellproblems %}
+		  {% assign writeup = site.writeups | where:"title", solution.title | first %}
+		  <li>
+			  <a href="{{ writeup.url | prepend:site.baseurl }}">
+				  {{ writeup.title }}
+			  </a>
+		  </li>
+	  {% endfor %}
+	</ul>
+  </section>
