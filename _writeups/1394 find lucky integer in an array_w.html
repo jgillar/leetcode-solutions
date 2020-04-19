@@ -1,0 +1,23 @@
+---
+title: 1394. Find Lucky Integer in an Array
+---
+
+<p>
+  For this problem I just used a simple hash map where the key-value pairs are
+  <code>(k, frequency(k))</code> where <code>k</code> is some integer in
+  <code>arr</code>. We iterate over the array and increment the counter for each
+  value. Then after that we iterate over the keys in the map to actually find
+  the lucky integers which is when for the key-value pair
+  <code>(k, frequency(k))</code>, <code>k == frequency(k)</code>.
+</p>
+
+<p>
+  Iterating over the array is <code>O(n)</code> where <code>n</code> is the
+  length of the array. Inserting into and retrieving from the hash map is
+  <code>O(1)</code> so amortized <code>O(n)</code> overall to record all the
+  array values and their frequencies. To locate the lucky integers, we iterate
+  over the keys of the hash map. In the worst case, <code>arr</code> consists of
+  only unique integers so the map contains <code>n</code> keys so iterating over
+  them is <code>O(n)</code>. All in all, the entire running time is simply
+  <code>O(n)</code>.
+</p>
