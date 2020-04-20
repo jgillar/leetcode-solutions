@@ -1,0 +1,112 @@
+---
+title: 371. Sum of Two Integers
+---
+
+<p>
+  This was actually kind of difficult despite it being marked as an easy
+  problem. I feel like I had a vague idea about how to go about this one only
+  because of a similar problem I had to do back in college. If I had never done
+  that problem I don't think I could have come up with a solution for this.
+</p>
+<p>
+  I tried an example with <code>11</code> and <code>3</code> so I could think
+  about how to 'transform' the summands into what their sum should be.
+</p>
+<p>
+<pre>
+  1011
++ 0011
+= 1110
+</pre>
+</p>
+<p>If we start to add the two number together like you normally would, 
+	we would start with the rightmost bits and do <code>1+1=10</code>. 
+	Another way to think about it is  <code>1+1=0</code> and we have to 
+	carry the <code>1</code>. How would we actually carry that <code>1</code>?
+	We just shift it left just like if you were calculating the sum by hand.
+<pre>
+  1
++ 1
+= (carry 1)0
+= 10
+</pre>
+</p>
+<p>So how do we know which bits will result in a carry? If we look at the example again it's easy to see we will need to do carrying
+	for the 3rd and 4th bits.
+<pre>
+  1011
++ 0011
+= 10(carry 1 + (1+1))0
+= 1(carry 1)10
+= 1110
+</pre>
+</p>
+<p>When both bits to be summed are <code>1</code> it will result in a carry. 
+	 We could  use <code>&</code> the bitwise AND operation to locate these bits.
+<pre>
+  1011
+& 0011
+= 0011
+</pre>
+Then to actually 'do' the carrying, we simply shift the bits left.
+<pre>
+  0011 << 1
+= 0110
+</pre>
+</p>
+<p>
+	But this isn't exactly what we want. It's close but not quite. 
+	The leftmost digit is still wrong. If we think about how we add
+	the bits by hand again, we notice that <code>1+0=1</code> and 
+	<code>1+1=(carry 1)0</code>. This looks similar to a bitwise operation, 
+	in particular bitwise XOR <code>^</code>.
+<pre>
+  1011
+^ 0011
+= 1000
+</pre>
+The first leftmost bit is correct but the second two aren't. We will need 
+to combine XOR and AND and shifting to get the result we want.
+</p>
+<p>So to summarize this so far since I'm really bad at explaining things,
+	when we add two bits together they result in either <code>1</code> or 
+	<code>0</code> without needing to carry or <code>0</code> and 
+	needing to carry. When at least one bit is <code>0</code>, 
+	there will be no carry and we can compute that sum by using 
+	<code>^</code> XOR. To locate the bits where carrying occurs, 
+	we can use <code>&</code> AND. To actually 'do' the carrying, 
+	we <code><<</code> shift the bits left by 1 position.
+</p>
+<p>So for the example of <code>11</code> and <code>3</code>,
+<pre>
+  1011
+& 0011
+= 0011
+
+  0011 << 1
+= 0110
+
+  1011
+^ 0011
+= 1000
+</pre>
+</p>
+<p> So what do we do with these resulting numbers? We add them again. Why?
+	We are adding the result of adding the numbers together without carrying 
+	and the results of just carrying.  
+<pre>
+  0110
+& 1000
+= 0000
+
+  0000 << 1
+= 0000
+
+  0110
+^ 1000
+= 1110
+</pre>
+</p>
+<p>There are no bits left to carry so we're done. Also observe that we got 
+	the right answer, 14.
+</p>

@@ -1,0 +1,22 @@
+---
+title: 371. Sum of Two Integers
+language: javascript
+---
+/**
+ * @param {number} a
+ * @param {number} b
+ * @return {number}
+ */
+let getSum = function (a, b) {
+  //keep left shifting until there are no more digit sums to carry
+  while (a != 0) {
+    //carries occur at positions where both bits are 1
+    let carryDigits = a & b;
+    //'add' together bits
+    b = a ^ b;
+    //actually 'carry over' the carry digits by shifting left
+    a = carryDigits << 1;
+  }
+
+  return b;
+};
