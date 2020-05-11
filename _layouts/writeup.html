@@ -23,7 +23,9 @@ layout: default
     {% when "javascript" %}
       {% highlight javascript linenos %}{{solution.content}}{% endhighlight %}
     {% when "sql" %}
-      {% highlight sql linenos %}{{solution.content}}{% endhighlight %}    
+      {% highlight sql linenos %}{{solution.content}}{% endhighlight %}   
+    {% when "php" %}
+      {% highlight php linenos %}{{solution.content}}{% endhighlight %}  
     {% when "bash" %}
       {% highlight bash linenos %}{{solution.content}}{% endhighlight %}
     {% else %}
