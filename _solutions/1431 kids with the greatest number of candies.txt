@@ -1,0 +1,45 @@
+---
+title: 1431. Kids With the Greatest Number of Candies
+language: php
+---
+class Solution {
+
+    /**
+     * @param Integer[] $candies
+     * @param Integer $extraCandies
+     * @return Boolean[]
+     */
+    function kidsWithCandies($candies, $extraCandies) {
+        $results = array();
+        $maxCandies = 0;
+        $maxPosition = 0;
+        $x = 0;
+        
+        //find maximum number of candies
+        while($x < sizeof($candies)){
+            if($candies[$x] >= $maxCandies){
+                $maxCandies = $candies[$x];
+                $maxPosition = $x;
+            }
+            
+            $x++;
+        }
+
+        $x = 0;
+        //go through and determine who has more than the maximum
+        //when their the extra candies are added
+        while($x < sizeof($candies)){
+            if(($candies[$x] + $extraCandies) >= $maxCandies){
+                $results[] = true;
+            }
+            else{
+                $results[] = false;
+            }
+            
+            $x++;
+        }
+        
+        
+        return $results;
+    }
+ }

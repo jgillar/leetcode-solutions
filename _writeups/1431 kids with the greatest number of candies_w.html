@@ -1,0 +1,20 @@
+---
+title: 1431. Kids With the Greatest Number of Candies
+---
+
+<p>
+  Usually I write my solutions in JavaScript but I decided to do PHP for this
+  one.
+</p>
+<p>
+  My solution is basic. All we do is find the highest number of candies in
+  <code>$candies</code> and determine which values in the array are greater than
+  that number when added to <code>$extraCandies</code>.
+</p>
+<p>
+  The running time is simply <code>O(n)</code> as we are only iterating over the
+  <code>$candies</code> array once. There is also a call to
+  <code>max()</code> and I am assuming that also just iterates over the array
+  and doesn't do anything special. My method was the first that came to mind but
+  I can't think of a better algorithm to do this.
+</p>
