@@ -15,8 +15,6 @@ language: javascript
  * @return {number[]}
  */
 ​
-​
-​
 var inorderTraversal = function(root) {
 ​
     let stack = [];
@@ -30,7 +28,6 @@ var inorderTraversal = function(root) {
                 node = node.left;
             }
         
-        console.log('done with elft subtree')
             if(!stack.length)
                 break;
         

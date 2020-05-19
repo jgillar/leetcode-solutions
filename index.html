@@ -16,16 +16,19 @@ layout: home
 </p>
 <section>
   <h2>Algorithms</h2>
+
   <ul>
     {% assign algoproblems = site.solutions | where_exp:"item", "item.language
-    != 'sql'" %} {% for solution in algoproblems %} {% assign writeup =
-    site.writeups | where:"title", solution.title | first %}
-    <li>
-      <a href="{{ writeup.url | prepend:site.baseurl }}">
-        {{ writeup.title }}
-      </a>
-    </li>
-    {% endfor %}
+    != 'sql'" %} 
+      {% for solution in algoproblems %} 
+        {% assign writeup = site.writeups | where:"title", solution.title | first %}
+        {% assign title = writeup.title | split:". " %}
+        <li>
+            <a href="{{ writeup.url | prepend:site.baseurl }}">
+              {{ title[1] }}
+            </a>
+          </li>
+      {% endfor %}
   </ul>
 </section>
 
@@ -33,13 +36,16 @@ layout: home
   <h2>Database</h2>
   <ul>
     {% assign databaseproblems = site.solutions | where_exp:"item",
-    "item.language == 'sql'" %} {% for solution in databaseproblems %} {% assign
+    "item.language == 'sql'" %} 
+    {% for solution in databaseproblems %} 
+    {% assign
     writeup = site.writeups | where:"title", solution.title | first %}
+    {% assign title = writeup.title | split:". " %}
     <li>
-      <a href="{{ writeup.url | prepend:site.baseurl }}">
-        {{ writeup.title }}
-      </a>
-    </li>
+        <a href="{{ writeup.url | prepend:site.baseurl }}">
+          {{ title[1] }}
+        </a>
+      </li>
     {% endfor %}
   </ul>
 </section>
@@ -48,13 +54,15 @@ layout: home
   <h2>Shell</h2>
   <ul>
     {% assign shellproblems = site.solutions | where_exp:"item", "item.language
-    == 'bash'" %} {% for solution in shellproblems %} {% assign writeup =
+    == 'bash'" %} {% for solution in shellproblems %} 
+    {% assign writeup =
     site.writeups | where:"title", solution.title | first %}
+    {% assign title = writeup.title | split:". " %}
     <li>
-      <a href="{{ writeup.url | prepend:site.baseurl }}">
-        {{ writeup.title }}
-      </a>
-    </li>
+        <a href="{{ writeup.url | prepend:site.baseurl }}">
+          {{ title[1] }}
+        </a>
+      </li>
     {% endfor %}
   </ul>
 </section>
