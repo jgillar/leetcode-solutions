@@ -1,0 +1,5 @@
+.special-link {
+  background-color: $brand-color;
+  color: lighten($color: $brand-color, $amount: 90%);
+  padding: 10px;
+}
