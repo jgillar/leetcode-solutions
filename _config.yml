@@ -27,13 +27,20 @@ collections:
     output: false
   descriptions:
     output: false
-
+  pages:
+    output: true
+    permalink: /:title/
 defaults:
   - scope:
-      path: ""
+      path: "_writeups"
       type: "writeups"
     values:
       layout: writeup
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: page
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
