@@ -1,0 +1,12 @@
+---
+title: 108. Convert Sorted Array to Binary Search Tree
+---
+
+<p>
+  This was a straightforward one. We take the middle element of the array and
+  create a new node from it. Then we look at the left half of the array and
+  create a new node from that and point the current node to it. Repeat for the
+  right half of the array. It's basic recursion. The running time is simply
+  <code>O(n)</code> since we're just iterating over the initial array exactly
+  once.
+</p>
