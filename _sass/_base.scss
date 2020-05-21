@@ -1,0 +1,160 @@
+body {
+	background-color: $tan;
+	color: #333333;
+	font-family: $body;
+}
+
+p {
+	line-height: 1.5;
+	&:last-child {
+		margin-bottom: 0px;
+	}
+}
+
+code,
+pre {
+	background-color: $code-background-color;
+	color: $black;
+}
+
+h1,
+h2 {
+	font-family: $headline;
+	font-weight: 700;
+}
+
+h1 {
+	font-size: 1.75em;
+}
+
+h2:not(:first-child){
+	margin-top: 1em;
+}
+
+h3 {
+	font-size: 1.25em;
+	font-weight: 700;
+	line-height: 1.2em;
+}
+
+h4{
+	font-weight: 600;
+}
+
+main.page-content {
+	padding: 0px;
+}
+
+.inner {
+	max-width: calc(#{$content-width} - (#{$spacing-unit} * 2));
+	margin: 0px auto;
+}
+
+header.site-header,
+footer.site-footer {
+	background: $black;
+	border: 0px;
+	color: #ffffff;
+	max-width: 100%;
+	padding: ($spacing-unit / 2) $spacing-unit;
+
+	a,
+	a:visited {
+		color: #ffffff;
+	}
+
+	a:active,
+	a:hover {
+		color: lighten($color: $blue, $amount: 20%);
+	}
+}
+
+header.site-header{
+	position: sticky;
+	top: 0px;
+}
+
+footer.site-footer {
+	font-size: 0.8em;
+
+	h2 {
+		font-family: $body;
+	}
+
+	.footer-col-wrapper {
+		color: darken(#ffffff, 20%);
+		font-size: 1em;
+	}
+}
+
+.wrapper {
+	max-width: 100%;
+	padding: 0px;
+	& > article,
+	& > div {
+		& > section {
+			padding: $spacing-unit;
+		}
+	}
+}
+
+.post-header {
+	background: $blue;
+	color: #ffffff;
+	margin: 0px;
+	padding: 2.25em $spacing-unit;
+
+	h1 {
+		margin: 0px;
+	}
+}
+.special-link {
+	background-color: $brand-color;
+	color: lighten($color: $brand-color, $amount: 90%);
+	padding: 10px;
+}
+
+.wrapper {
+	& > article,
+	& > div {
+		& > section.description {
+			background-color: $darkblue;
+			color: #ffffff;
+			a{
+				color: lighten($blue, 20%);
+				text-decoration: underline;
+				&:hover, &:active{
+					background-color: #ffffff;
+					color: $blue;
+				}
+			}
+		}
+		& > section.writeup {
+			background-color: #ffffff;
+		}
+	}
+}
+
+.rouge-table {
+	border: 0px;
+	margin-bottom: 0px;
+	td,
+	tbody,
+	tr,
+	pre,
+	code {
+		border: 0px;
+		margin: 0px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+.site-nav{
+	background: lighten($black, 20%);
+	border: lighten($black, 50%);
+}
+
+.site-nav .menu-icon > svg {
+    fill: #ffffff;
+}
+}

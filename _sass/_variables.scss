@@ -1,0 +1,21 @@
+$headline: "Arvo", serif;
+$body: "Lato", sans-serif;
+
+//$tan: #edddd4;
+$tan: #f1f1f1;
+$silver: #C1C1C1;
+$black: #292F36;
+$blue: #3E92CC;
+$red: #B76D68;
+$darkblue: #2F6690;
+ 
+$base-font-family: $body;
+$base-font-size: 18px;
+$base-line-height: 1.5;
+
+$content-width: 1000px;
+
+$brand-color: $blue;
+$code-background-color: desaturate(lighten($blue, 45%), 20%);
+$link-base-color: $blue;
+$link-hover-color: $red;

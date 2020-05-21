@@ -3,66 +3,75 @@ title: My Leetcode Solutions
 layout: home
 ---
 
-<p>
-  I decided to slowly work my way through
-  <a href="https://leetcode.com/">LeetCode</a>, a website that contains coding
-  problems ranging in difficulty and topics including data structures and
-  algorithms. My goal is to complete a few problems a week. I don't have a
-  particular pattern for selecting problems, I usually just pick whatever sounds
-  most interesting based on the title or by choosing one at random. My solutions
-  are usually going to be written in JavaScript and I'll try to include a short
-  write-up with my thoughts on the problem along with an analysis for whatever
-  algorithm I come up with.
-</p>
-<section>
-  <h2>Algorithms</h2>
-
-  <ul>
-    {% assign algoproblems = site.solutions | where_exp:"item", "item.language
-    != 'sql'" %} 
-      {% for solution in algoproblems %} 
-        {% assign writeup = site.writeups | where:"title", solution.title | first %}
-        {% assign title = writeup.title | split:". " %}
-        <li>
-            <a href="{{ writeup.url | prepend:site.baseurl }}">
-              {{ title[1] }}
-            </a>
-          </li>
-      {% endfor %}
-  </ul>
+<section class="description">
+	<div class="inner">
+			<p>
+			I decided to slowly work my way through
+			<a href="https://leetcode.com/">LeetCode</a>, a website that contains coding
+			problems ranging in difficulty and topics including data structures and
+			algorithms. My goal is to complete a few problems a week. I don't have a
+			particular pattern for selecting problems, I usually just pick whatever sounds
+			most interesting based on the title or by choosing one at random. My solutions
+			are usually going to be written in JavaScript and I'll try to include a short
+			write-up with my thoughts on the problem along with an analysis for whatever
+			algorithm I come up with.
+			</p>
+	</div>
+</section>
+<section class="algorithms">
+	<div class="inner">
+		<h2>Algorithms</h2>
+			<ul>
+				{% assign algoproblems = site.solutions | where_exp:"item", "item.language
+				!= 'sql'" %} 
+				{% for solution in algoproblems %} 
+					{% assign writeup = site.writeups | where:"title", solution.title | first %}
+					{% assign title = writeup.title | split:". " %}
+					<li>
+						<a href="{{ writeup.url | prepend:site.baseurl }}">
+						{{ title[1] }}
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+	</div>
 </section>
 
-<section>
-  <h2>Database</h2>
-  <ul>
-    {% assign databaseproblems = site.solutions | where_exp:"item",
-    "item.language == 'sql'" %} 
-    {% for solution in databaseproblems %} 
-    {% assign
-    writeup = site.writeups | where:"title", solution.title | first %}
-    {% assign title = writeup.title | split:". " %}
-    <li>
-        <a href="{{ writeup.url | prepend:site.baseurl }}">
-          {{ title[1] }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+<section class="database">
+		<div class="inner">
+			<h2>Database</h2>
+			<ul>
+				{% assign databaseproblems = site.solutions | where_exp:"item",
+				"item.language == 'sql'" %} 
+				{% for solution in databaseproblems %} 
+				{% assign
+				writeup = site.writeups | where:"title", solution.title | first %}
+				{% assign title = writeup.title | split:". " %}
+				<li>
+					<a href="{{ writeup.url | prepend:site.baseurl }}">
+					{{ title[1] }}
+					</a>
+				</li>
+				{% endfor %}
+			</ul>
+	</div>
 </section>
 
-<section>
-  <h2>Shell</h2>
-  <ul>
-    {% assign shellproblems = site.solutions | where_exp:"item", "item.language
-    == 'bash'" %} {% for solution in shellproblems %} 
-    {% assign writeup =
-    site.writeups | where:"title", solution.title | first %}
-    {% assign title = writeup.title | split:". " %}
-    <li>
-        <a href="{{ writeup.url | prepend:site.baseurl }}">
-          {{ title[1] }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+<section class="shell">
+	<div class="inner">
+		<h2>Shell</h2>
+		<ul>
+			{% assign shellproblems = site.solutions | where_exp:"item", "item.language
+			== 'bash'" %} {% for solution in shellproblems %} 
+			{% assign writeup =
+			site.writeups | where:"title", solution.title | first %}
+			{% assign title = writeup.title | split:". " %}
+			<li>
+				<a href="{{ writeup.url | prepend:site.baseurl }}">
+				{{ title[1] }}
+				</a>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
 </section>

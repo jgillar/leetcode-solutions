@@ -2,43 +2,55 @@
 layout: default
 ---
 
-<header class="post-header">
-  <h1 class="post-title">{{ page.title | escape }}</h1>
-</header>
+<article class="post writeup">
+	<header class="post-header">
+		<div class="inner">
+			<h1>{{ page.title | escape }}</h1>
+		</div>
+	</header>
 
+	<!-- description of problem -->
+	<section class="description">
+		<div class="inner">
+			{% assign desc = site.descriptions | where: "title", page.title | first %}
+			{{desc.content}}
+		</div>
+	</section>
+	<!-- end description -->
 
-<!-- description of problem -->
-{% assign desc = site.descriptions | where: "title", page.title | first %}
-{{desc.content}}
-<!-- end description -->
+	<section class="solution">
+		<div class="inner">
+			<h2>My Solution</h2>
+			<!-- source code for solution -->
+			<h3>Source Code</h3>
+			{% assign solution = site.solutions | where: "title", page.title | first %}
 
-<section>
-  <h2>My Solution</h2>
-  <!-- source code for solution -->
-  <h3>Source Code</h3>
-  {% assign solution = site.solutions | where: "title", page.title | first %}
-
-  {% comment %}
-  Liquid doesn't allow for passing in variables to tags, so
-  instead we just use a case statement for every language type...
-  {% endcomment%} 
-  {% case solution.language %}
-    {% when "javascript" %}
-      {% highlight javascript linenos %}{{solution.content}}{% endhighlight %}
-    {% when "sql" %}
-      {% highlight sql linenos %}{{solution.content}}{% endhighlight %}   
-    {% when "php" %}
-      {% highlight php linenos %}{{solution.content}}{% endhighlight %}  
-    {% when "bash" %}
-      {% highlight bash linenos %}{{solution.content}}{% endhighlight %}
-    {% else %}
-      {% highlight linenos %}{{solution.content}}{% endhighlight %}
-  {% endcase %}
- 
-  <!-- end source code -->
-
-  <!-- writeup -->
-  <h3>Analysis</h3>
-  {{ content }}
-  <!-- end write up-->
-</section>
+			{% comment %}
+			Liquid doesn't allow for passing in variables to tags, so
+			instead we just use a case statement for every language type...
+			{% endcomment%} 
+			{% case solution.language %}
+				{% when "javascript" %}
+				{% highlight javascript linenos %}{{solution.content}}{% endhighlight %}
+				{% when "sql" %}
+				{% highlight sql linenos %}{{solution.content}}{% endhighlight %}   
+				{% when "php" %}
+				{% highlight php linenos %}{{solution.content}}{% endhighlight %}  
+				{% when "bash" %}
+				{% highlight bash linenos %}{{solution.content}}{% endhighlight %}
+				{% else %}
+				{% highlight linenos %}{{solution.content}}{% endhighlight %}
+			{% endcase %}
+			<!-- end source code -->
+		</div>
+	</section>
+			
+	<!-- writeup -->
+	<section class="writeup">
+		<div class="inner">
+			<h2>Analysis</h2>
+			{{ content }}
+			<!-- end write up-->
+		</div>
+	</section>
+</article>

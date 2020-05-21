@@ -4,58 +4,58 @@ layout: page
 ---
 
 <section>
-  <h2>About</h2>
-  <p>
-    This is a simple bookmarklet made for generating the files needed for my
-    writeups on Jekyll-powered website. Instead of copy/pasting everything by
-    hand, this extracts the problem description and solution code straight from
-    Leetcode and also makes an empty page file complete with front matter
-    already added in. It's extremely convienient!
-  </p>
-  <p><img src="{{'/assets/images/screenshot.jpg' | absolute_url}}" /></p>
-  <p>My leetcode solutions site is organized in this way:</p>
-  <pre>
-.
-├── _descriptions/
-│   ├── 123 example1.html
-│   └── 456 example2.html
-├── _solutions/
-│   ├── 123 example1.txt
-│   └── 456 example2.txt
-└── _writeups/
-    ├── 123 example1_w.html
-    └── 456 example2_w.html
-  </pre>
-  <p>
-    So the bookmarklet creates <code>xxx name.html</code>,
-    <code>xxx name.txt</code>, <code>xxx name_w.html</code> which can easily be
-    moved to their respective folders. No special configurations are necessary
-    or anything.
-  </p>
-</section>
+	<div class="inner">
+		<h2>About</h2>
+		<p>
+			This is a simple bookmarklet made for generating the files needed for my
+			writeups on Jekyll-powered website. Instead of copy/pasting everything by
+			hand, this extracts the problem description and solution code straight from
+			Leetcode and also makes an empty page file complete with front matter
+			already added in. It's extremely convienient!
+		</p>
+		<p><img src="{{'/assets/images/screenshot.jpg' | absolute_url}}" /></p>
+		<p>My leetcode solutions site is organized in this way:</p>
+		<pre>
+		.
+		├── _descriptions/
+		│   ├── 123 example1.html
+		│   └── 456 example2.html
+		├── _solutions/
+		│   ├── 123 example1.txt
+		│   └── 456 example2.txt
+		└── _writeups/
+			├── 123 example1_w.html
+			└── 456 example2_w.html
+		</pre>
+		<p>
+			So the bookmarklet creates <code>xxx name.html</code>,
+			<code>xxx name.txt</code>, <code>xxx name_w.html</code> which can easily be
+			moved to their respective folders. No special configurations are necessary
+			or anything.
+		</p>
 
-<section>
-  <h2>How to use it</h2>
-  <p>
-    Since it's not a good idea to blindly execute JavaScript in your browser,
-    you should look over the
-    <a
-      href="https://github.com/jgillar/leetcode-solutions/blob/gh-pages/template_generator_jekyll.js"
-      >source code</a
-    >. Next you can either run that through a minifier and create a bookmarklet
-    with that set as your URL or you can simply bookmark the link below (or drag
-    it to your bookmark bar).
-  </p>
-  <p>
-    <a class="special-link" id="bookmarklet-link" href=""
-      >Leetcode Bookmarklet</a
-    >
-  </p>
-  <p>
-    After that, simply go to any leetcode problem you've completed, make sure
-    you are viewing the "Description" tab, and click the bookmarklet. Then make
-    sure the text is correct and download your files. That's it.
-  </p>
+		<h2>How to use it</h2>
+		<p>
+			Since it's not a good idea to blindly execute JavaScript in your browser,
+			you should look over the
+			<a
+			href="https://github.com/jgillar/leetcode-solutions/blob/gh-pages/template_generator_jekyll.js"
+			>source code</a
+			>. Next you can either run that through a minifier and create a bookmarklet
+			with that set as your URL or you can simply bookmark the link below (or drag
+			it to your bookmark bar).
+		</p>
+		<p>
+			<a class="special-link" id="bookmarklet-link" href=""
+			>Leetcode Bookmarklet</a
+			>
+		</p>
+		<p>
+			After that, simply go to any leetcode problem you've completed, make sure
+			you are viewing the "Description" tab, and click the bookmarklet. Then make
+			sure the text is correct and download your files. That's it.
+		</p>
+	</div>
 </section>
 
 <!-- inline javascript is really bad but this script will only ever be present
