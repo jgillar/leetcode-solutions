@@ -1,0 +1,26 @@
+---
+title: 1313. Decompress Run-Length Encoded List
+---
+
+<p>
+	This is simple and straightforward. We keep a pointer to the current number
+	we're looking at. This is the frequency <code>freq</code>. The number that
+	follows it is the number to insert in the new array <code>value</code>. Then
+	we simply insert that number <code>value</code> <code>freq</code> times with a
+	loop. That's really all there is to it.
+</p>
+<p>
+	Let <code>f</code> be the largest frequency in <code>nums</code> and
+	<code>n</code> be the number of values in <code>nums</code>. Note that
+	<code>n</code> isn't the length of <code>nums</code>, that would actually be
+	<code>2n</code>. Anyway, let's consider the worst case scenario for this
+	algorithm. That's when the frequency of every value is <code>f</code>. Then
+	there will be <code>n * f</code> total insertions so the running time is
+	simply <code>O(fn)</code>.
+</p>
+<p>
+	I thought about using a hash map for this but it seemed like overkill. You are
+	sacrificing space for speed. Plus, I imagine that compression/decompression on
+	the same item isn't done constantly over and over so speed isn't much of a
+	concern anyway.
+</p>

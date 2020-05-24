@@ -1,0 +1,25 @@
+---
+title: 1313. Decompress Run-Length Encoded List
+language: javascript
+---
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+let decompressRLElist = function(nums) {
+    let result = [];
+    
+    let ptr = 0;
+    while(ptr < nums.length){
+        let freq = nums[ptr];
+        let val = nums[ptr+1];
+
+        for(let x = 0; x < freq; x++){
+            result.push(val);
+        }
+
+        ptr += 2;
+    }
+    
+    return result;
+};
