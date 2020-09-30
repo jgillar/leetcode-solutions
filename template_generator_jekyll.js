@@ -3,43 +3,43 @@ this is a simple script that pulls a leetcode problem's
 description HTML so I can use it for my writeup pages
 */
 (function() {
-  let makeTemplate = () => {
-    let title = document.querySelector("[data-cy='question-title']")
-      .textContent;
-    let filename = title.toLocaleLowerCase().replace(".", "");
-    let language = document
-      .querySelector("div[data-cy='lang-select']")
-      .innerText.toLowerCase();
-    let description =
-      `
+	let makeTemplate = () => {
+		let title = document.querySelector("[data-cy='question-title']")
+			.textContent;
+		let filename = title.toLocaleLowerCase().replace(".", "");
+		let language = document
+			.querySelector("div[data-cy='lang-select']")
+			.innerText.toLowerCase();
+		let description =
+			`
 ---
 title: ${title}
 ---
-      <section>
+			<section>
 		<h2>Description</h2>` +
-      document.querySelector(
-        "div[data-cy='description-content'] > div > div:nth-child(2)"
-      ).innerHTML +
-      `</section>`;
+			document.querySelector(
+				"div[data-cy='description-content'] > div > div:nth-child(2)"
+			).innerHTML +
+			`</section>`;
 
-    //grab the solution code from localStorage
-    //this prevents the weird formatting issues
-    //that happen when copying the code off the page
-    //solution keys are formatted nn_mmmmmm_language
-    let questionNumber = document.querySelector("form input[name='question']")
-      .value;
-    let solutionKey = Object.keys(localStorage).filter(key => {
-      return key.match(`^${questionNumber}.*${language}$`);
-    });
+		//grab the solution code from localStorage
+		//this prevents the weird formatting issues
+		//that happen when copying the code off the page
+		//solution keys are formatted nn_mmmmmm_language
+		let questionNumber = document.querySelector("div[data-cy='question-title']")
+			.textContent.match(/(.*)\./)[1];
+		let solutionKey = Object.keys(localStorage).filter(key => {
+			return key.match(`^${questionNumber}.*${language}$`);
+		});
 
-    //substring() offset is 1 because the values are wrapped in ""s
-    let solution = localStorage.getItem(solutionKey[0]).replace(/\\n/gi, "\n");
-    solution = solution
-      .substring(1, solution.length - 1)
-      .replace(/\n*\t*$/gi, "");
+		//substring() offset is 1 because the values are wrapped in ""s
+		let solution = localStorage.getItem(solutionKey[0]).replace(/\\n/gi, "\n");
+		solution = solution
+			.substring(1, solution.length - 1)
+			.replace(/\n*\t*$/gi, "");
 
-    let dialog = `
-  <div id="lcs-dialog">
+		let dialog = `
+	<div id="lcs-dialog">
 		<section>
 			<p id="lcs-title">${title}</p>
 			<label for="lcs-description">Description markup:</label>
@@ -62,91 +62,91 @@ ${solution}
 		<section>
 			<button id="lcs-close">Close</button>
 		</section>
-  </div>`;
+	</div>`;
 
-    return dialog;
-  };
+		return dialog;
+	};
 
-  let styles = `
-	  <style type="text/css">
-		  #lcs-dialog{
-			  background: #cccccc;
-			  border: 5px solid #aaaaaa;
-			  left: 50%;
-			  padding: 25px;
-			  position: absolute;
-			  top: 50%;
-			  transition: opacity .5s;
-			  transform: translate(-50%, -50%);
-			  width: 400px;
-			  z-index: 100;
-		  }
-		  #lcs-title{
-			  font-weight: bold;
-		  }
-		  #lcs-dialog label{
-			  display: block;
-		  }
-		  #lcs-dialog textarea, input{
-        display: block;
-        font-family: Courier, monospaced;
-			  margin: 10px 0px;
-			  padding: 2px 10px;
-			  width: 100%;
-		  }
-	  </style>
-  `;
+	let styles = `
+		<style type="text/css">
+			#lcs-dialog{
+				background: #cccccc;
+				border: 5px solid #aaaaaa;
+				left: 50%;
+				padding: 25px;
+				position: absolute;
+				top: 50%;
+				transition: opacity .5s;
+				transform: translate(-50%, -50%);
+				width: 400px;
+				z-index: 100;
+			}
+			#lcs-title{
+				font-weight: bold;
+			}
+			#lcs-dialog label{
+				display: block;
+			}
+			#lcs-dialog textarea, input{
+				display: block;
+				font-family: Courier, monospaced;
+				margin: 10px 0px;
+				padding: 2px 10px;
+				width: 100%;
+			}
+		</style>
+	`;
 
-  let download = (filename, text) => {
-    let el = document.createElement("a");
-    el.setAttribute(
-      "href",
-      "data:text/plain;charset=utf-8," + encodeURIComponent(text)
-    );
-    el.setAttribute("download", filename);
+	let download = (filename, text) => {
+		let el = document.createElement("a");
+		el.setAttribute(
+			"href",
+			"data:text/plain;charset=utf-8," + encodeURIComponent(text)
+		);
+		el.setAttribute("download", filename);
 
-    el.style.display = "none";
-    document.body.appendChild(el);
+		el.style.display = "none";
+		document.body.appendChild(el);
 
-    el.click();
+		el.click();
 
-    document.body.removeChild(el);
-  };
+		document.body.removeChild(el);
+	};
 
-  let dialog = document.getElementById("lcs-dialog");
-  if (dialog) {
-    dialog.style.opacity = 1;
-  } else {
-    document
-      .getElementsByTagName("body")[0]
-      .insertAdjacentHTML("beforeend", makeTemplate() + " " + styles);
-    dialog = document.getElementById("lcs-dialog");
-  }
+	let dialog = document.getElementById("lcs-dialog");
+	if (dialog) {
+		dialog.style.opacity = 1;
+	} else {
+		document
+			.getElementsByTagName("body")[0]
+			.insertAdjacentHTML("beforeend", makeTemplate() + " " + styles);
+		dialog = document.getElementById("lcs-dialog");
+	}
 
-  document.addEventListener("click", function(e) {
-    //close button
-    if (e.target && e.target.id == "lcs-close") {
-      dialog.style.opacity = 0;
-    }
+	document.addEventListener("click", function(e) {
+		//close button
+		if (e.target && e.target.id == "lcs-close") {
+			dialog.style.opacity = 0;
+		}
 
-    //download button
-    if (e.target && e.target.id == "lcs-download") {
-      e.preventDefault();
-      let description = document.querySelector(
-        "#lcs-dialog textarea[name='lcs-description']"
-      ).value;
-      let solution = document.querySelector(
-        "#lcs-dialog textarea[name='lcs-solution']"
-      ).value;
-      let writeup =
-        description.slice(0, description.lastIndexOf("---") + 3) + "\n";
-      let filename = document.querySelector(
-        "#lcs-dialog input[name='lcs-filename']"
-      ).value;
+		//download button
+		if (e.target && e.target.id == "lcs-download") {
+			e.preventDefault();
+			let description = document.querySelector(
+				"#lcs-dialog textarea[name='lcs-description']"
+			).value;
+			let solution = document.querySelector(
+				"#lcs-dialog textarea[name='lcs-solution']"
+			).value;
+			let writeup =
+				description.slice(0, description.lastIndexOf("---") + 3) + "\n";
+			let filename = document.querySelector(
+				"#lcs-dialog input[name='lcs-filename']"
+			).value;
 
-      download(filename + ".html", description);
-      download(filename + ".txt", solution);
-      download(filename + "_w.html", writeup);
-    }
-  });
+			download(filename + ".html", description);
+			download(filename + ".txt", solution);
+			download(filename + "_w.html", writeup);
+		}
+	});
 })();
